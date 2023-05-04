@@ -32,7 +32,7 @@ function App() {
       "https://images.pexels.com/photos/209037/pexels-photo-209037.jpeg?auto=compress&cs=tinysrgb&w=400",
     cols: 3,
     rows: 3,
-    width: 0,
+    width: 600,
   };
 
   const [formValues, setFormValues] = useState(defaultValues);
