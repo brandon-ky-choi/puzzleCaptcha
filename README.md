@@ -4,24 +4,24 @@
 
 <h3>Usage</h3>
 
-<code>
+```
 import React from 'react';
 import PuzzleCaptcha from 'PuzzleCaptcha';
 
 function App() {
-return (
-<div>
-<h1>Are you human?</h1>
-<p>Please select the same puzzle piece.</p>
-<PuzzleCaptcha
-        image="https://images.pexels.com/photos/209037/pexels-photo-209037.jpeg?auto=compress&cs=tinysrgb&w=400"
-        cols=(3}
-        rows={3}
-      />
-</div>
-);
+  return (
+    <div>
+      <h1>Are you human?</h1>
+      <p>Please select the same puzzle piece.</p>
+      <PuzzleCaptcha
+          image="https://images.pexels.com/photos/209037/pexels-photo-209037.jpeg?auto=compress&cs=tinysrgb&w=400"
+          cols=(3}
+          rows={3}
+        />
+    </div>
+  );
 }
-</code>
+```
 
 <h3>Props</h3>
 
