@@ -18,16 +18,20 @@ export const Wrapper = styled.div<WrapperProps>`
   }
 `;
 
-export const CellWrapper = styled.div`
-  position: relative;
-  overflow: hidden;
-  .placeholder {
+export const Placeholder = styled.img`
     display: block;
     width: 100%;
     &.is-error{
         display:none;
     }
-  }
+`;
+
+
+
+export const CellWrapper = styled.div`
+  position: relative;
+  overflow: hidden;
+
 `;
 
 export const Cell = styled.button`
@@ -67,7 +71,8 @@ export const Cell = styled.button`
 
 export const Piece = styled.div`
   position: relative;
-  margin-bottom: 1rem;
+  margin-top: 1rem;
+  
   img {
     opacity: 1;
   }

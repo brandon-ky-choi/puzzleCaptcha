@@ -111,7 +111,7 @@ function App() {
         </label>
         <hr />
         <button type="button" onClick={handleClick}>
-          Update Puzzle Cpatcha
+          Update Puzzle Captcha
         </button>
       </Form>
 
