@@ -30,7 +30,7 @@ const DefaultPuzzleCaptchaContext = {
     isSolved: false,
     randomNo: { col: 0, row: 0 },
   },
-  setPuzzleCaptchaContext: (key: string, value: any) => {},
+  setPuzzleCaptchaContext: (_key: string, _value: any) => {},
 };
 
 interface PuzzleCaptchaContextType {
@@ -185,7 +185,6 @@ function ImagePlaceholder() {
 function Input() {
   const {
     data: { inputName, isSolved, token },
-    setPuzzleCaptchaContext,
   } = useContext(PuzzleCaptchaContext);
   return (
     <input
@@ -198,18 +197,7 @@ function Input() {
 
 function Cells() {
   const {
-    data: {
-      image,
-      inputName,
-      isSolved,
-      token,
-      rows,
-      cols,
-      randomNo,
-      onVerify,
-      boxSize,
-      isReady,
-    },
+    data: { image, isSolved, rows, cols, randomNo, onVerify, boxSize, isReady },
     setPuzzleCaptchaContext,
   } = useContext(PuzzleCaptchaContext);
 
@@ -316,21 +304,8 @@ function Cells() {
 function PuzzleCaptcha() {
   const { data, setPuzzleCaptchaContext } = useContext(PuzzleCaptchaContext);
 
-  const {
-    image,
-    cols,
-    rows,
-    width,
-    onVerify,
-    inputName,
-    token,
-    className,
-    isReady,
-    isError,
-    isSolved,
-    randomNo,
-    boxSize,
-  } = data;
+  const { image, cols, rows, width, className, isReady, isError, isSolved } =
+    data;
 
   useEffect(() => {
     isReady && setPuzzleCaptchaContext("isReady", false);
