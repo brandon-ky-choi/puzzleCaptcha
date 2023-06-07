@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import PuzzleCaptcha from "./components/PuzzleCaptcha";
+import PuzzleCaptcha from "./PuzzleCaptcha";
 
 const Form = styled.form`
   max-width: 800px;
@@ -54,6 +54,7 @@ function App() {
 
   return (
     <>
+      <h2>PuzzleCaptcha Demo</h2>
       <h4>Props:</h4>
       <Form>
         <label>
