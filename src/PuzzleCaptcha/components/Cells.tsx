@@ -1,14 +1,15 @@
-import { useCallback, useContext, useRef } from "react";
+import React, { useCallback, useContext, useRef } from "react";
 import { PuzzleCaptchaContext } from "../const";
 import { CellRefsType } from "../types";
 import { Cell, Piece } from "../styled";
-import React from "react";
 
 function Cells() {
   const {
     data: { image, isSolved, rows, cols, randomNo, onVerify, boxSize, isReady },
     setPuzzleCaptchaContext,
   } = useContext(PuzzleCaptchaContext);
+
+  const { width: boxWidth, height: boxHeight } = boxSize;
 
   const cellsRef: CellRefsType = useCallback(() => {
     const returnRef: CellRefsType = [];
@@ -28,7 +29,7 @@ function Cells() {
         onVerify && onVerify();
       }
     },
-    [randomNo, onVerify]
+    [randomNo, onVerify],
   );
 
   const handleKeyDown = useCallback(
@@ -38,6 +39,7 @@ function Cells() {
       switch (e.key) {
         case "ArrowLeft":
           colNext = col !== 0 ? col - 1 : cols - 1;
+
           break;
         case "ArrowRight":
           colNext = col !== cols - 1 ? col + 1 : 0;
@@ -51,14 +53,18 @@ function Cells() {
         default:
           break;
       }
+
       cellsRef[rowNext][colNext].current?.focus();
     },
-    [cols, rows]
+    [cols, rows],
   );
 
   const cellSize = useCallback(() => {
-    return { width: boxSize.width / cols, height: boxSize.height / rows };
-  }, [boxSize, cols, rows])();
+    return { width: boxWidth / cols, height: boxHeight / rows };
+  }, [boxWidth, boxHeight, cols, rows])();
+
+  const { width: cellWidth, height: cellHeight } = cellSize;
+  const { col, row } = randomNo;
 
   const Cells: React.ReactElement[] = [];
   for (let r = 0; r < rows; r++) {
@@ -66,10 +72,10 @@ function Cells() {
       Cells.push(
         <Cell
           style={{
-            width: `${cellSize.width}px`,
-            height: `${cellSize.height}px`,
-            left: `${cellSize.width * c}px`,
-            top: `${cellSize.height * r}px`,
+            width: `${cellWidth}px`,
+            height: `${cellHeight}px`,
+            left: `${cellWidth * c}px`,
+            top: `${cellHeight * r}px`,
           }}
           onClick={() => handleClick(c, r)}
           key={`Cell-${r}-${c}`}
@@ -81,22 +87,28 @@ function Cells() {
           <img
             src={image}
             style={{
-              width: `${boxSize.width}px`,
-              height: `${boxSize.height}px`,
-              left: `${cellSize.width * randomNo.col * -1}px`,
-              top: `${cellSize.height * randomNo.row * -1}px`,
+              width: `${boxWidth}px`,
+              height: `${boxHeight}px`,
+              left: `${cellWidth * col * -1}px`,
+              top: `${cellHeight * row * -1}px`,
             }}
           />
-        </Cell>
+        </Cell>,
       );
     }
   }
+
+  const CellAnswer = React.cloneElement(
+    (() => {
+      const { ...props } = (Cells[0] as React.ReactElement).props;
+      return <Cell {...props} disabled={true} ref={null} />;
+    })(),
+  );
+
   Cells.push(
-    <Piece style={{ height: cellSize.height }} key="Cell-Answer">
-      {React.cloneElement(Cells[0], {
-        disabled: true,
-      })}
-    </Piece>
+    <Piece style={{ height: cellHeight }} key="Cell-Answer">
+      {CellAnswer}
+    </Piece>,
   );
 
   if (!isReady) {

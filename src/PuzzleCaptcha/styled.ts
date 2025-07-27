@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {WrapperProps} from './types';
+import { WrapperProps } from "./types";
 
 export const Wrapper = styled.div<WrapperProps>`
   box-sizing: border-box;
@@ -19,19 +19,16 @@ export const Wrapper = styled.div<WrapperProps>`
 `;
 
 export const Placeholder = styled.img`
-    display: block;
-    width: 100%;
-    &.is-error{
-        display:none;
-    }
+  display: block;
+  width: 100%;
+  &.is-error {
+    display: none;
+  }
 `;
-
-
 
 export const CellWrapper = styled.div`
   position: relative;
   overflow: hidden;
-
 `;
 
 export const Cell = styled.button`
@@ -44,12 +41,13 @@ export const Cell = styled.button`
     position: absolute;
     opacity: 0;
     transition: all 0.2s;
+    max-width: none;
   }
   &:after {
     content: "";
     display: block;
-    width: calc(100% - 2px);
-    height: calc(100% - 2px);
+    width: 100%;
+    height: 100%;
     border: 1px solid rgba(255, 255, 255, 0.3);
     position: absolute;
     left: 0;
@@ -57,9 +55,10 @@ export const Cell = styled.button`
     transition: all 0.2s;
   }
   &:focus-visible {
-    outline:none;
+    outline: none;
   }
-  &:hover,&:focus {
+  &:hover,
+  &:focus {
     &:after {
       border-color: #fff;
     }
@@ -72,7 +71,7 @@ export const Cell = styled.button`
 export const Piece = styled.div`
   position: relative;
   margin-top: 1rem;
-  
+
   img {
     opacity: 1;
   }

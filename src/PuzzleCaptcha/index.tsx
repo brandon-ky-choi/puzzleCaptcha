@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect } from "react";
+import { useCallback, useContext, useEffect } from "react";
 
 import { CellWrapper, Wrapper } from "./styled";
 
@@ -30,13 +30,13 @@ function PuzzleCaptchaInit({
 }: PuzzleCaptchaProps) {
   const getRandomNo = useCallback(
     (maxNo: number) => Math.floor(Math.random() * maxNo),
-    []
+    [],
   );
 
   if (cols <= 0 || rows <= 0 || cols > MaxColsRows || rows > MaxColsRows) {
     return (
       <p>
-        <b>cols</b> and <b>rows</b> should be 1-{MaxColsRows}
+        <b>cols</b> and <b>rows</b> should be <b>1~{MaxColsRows}</b>
       </p>
     );
   }
@@ -44,7 +44,7 @@ function PuzzleCaptchaInit({
   if (width && width < DefaultMinWidth) {
     return (
       <p>
-        <b>width</b> should be larger than {DefaultMinWidth}
+        <b>width</b> should be larger than <b>{DefaultMinWidth}px</b>
       </p>
     );
   }
@@ -100,4 +100,4 @@ function PuzzleCaptcha() {
   );
 }
 
-export default React.memo(PuzzleCaptchaInit);
+export default PuzzleCaptchaInit;

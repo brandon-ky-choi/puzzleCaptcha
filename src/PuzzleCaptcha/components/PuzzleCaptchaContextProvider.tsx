@@ -12,15 +12,21 @@ const PuzzleCaptchaContextProvider = ({
   const [puzzleCaptchaContext, setPuzzleCaptchaContext] =
     useState<PuzzleCaptchaContextDataType>(data);
 
-  const handlesetPuzzleCaptchaContext = (key: string, value: any) => {
-    setPuzzleCaptchaContext({ ...puzzleCaptchaContext, [key]: value });
+  const setPuzzleCaptchaContextValue = (
+    key: string,
+    value: string | number
+  ) => {
+    setPuzzleCaptchaContext((prev) => ({
+      ...prev,
+      [key]: value,
+    }));
   };
 
   return (
     <PuzzleCaptchaContext.Provider
       value={{
         data: puzzleCaptchaContext,
-        setPuzzleCaptchaContext: handlesetPuzzleCaptchaContext,
+        setPuzzleCaptchaContext: setPuzzleCaptchaContextValue,
       }}
     >
       {children}
