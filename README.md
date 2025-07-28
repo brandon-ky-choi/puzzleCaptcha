@@ -3,7 +3,7 @@
 <p>It automatically generates a very simple jigsaw kind of puzzle from any image on the web.</p>
 
 <h3>Demo</h3>
-<a href="http://puzzle-captcha.s3-website-ap-southeast-2.amazonaws.com/" target="_blank">http://puzzle-captcha.s3-website-ap-southeast-2.amazonaws.com/</a>
+<a href="https://brandon-ky-choi.github.io/puzzleCaptcha/" target="_blank">https://brandon-ky-choi.github.io/puzzleCaptcha/</a>
 
 <h3>Usage</h3>
 
